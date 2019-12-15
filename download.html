@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+.btnRedMini{
+border-radius : 7px;
+background-color:#b53b00;
+color : white;
+text-align : center;
+border: 1px solid #804a00;
+padding-left:20px;
+padding-right:20px;
+padding-top:2px;
+padding-bottom:2px;
+font-size:12px;
+}
+
+.btnRedMini:hover {
+background-color:#804a00;
+}
+table {
+  border-collapse:separate; 
+  border-spacing: 0 5px;
+  border-top:1px solid white;
+}
+table td {
+  border-bottom: 1px solid #ecf4f4;
+}
+table th{
+text-align:left;
+}
+.footer {
+text-align:center;
+border:1px solid e0eded;
+background-color:#ecf4f4;
+padding:3px;
+margin-top:25px;
+border-radius:3px;
+}
+  </style
+  
+  
+    <base target="_top">
+  </head>
+  <body>
+    <table width="100%">
+    <tr><th>Database</th><th>Type</th><th></th><th></th></tr>
+      <? for (var i = 0; i < data.length; i++) { ?>
+        <tr>
+          <? for (var j = 0; j < data[i].length; j++) { ?>
+            <td><?= data[i][j] ?></td>
+          <? } ?>
+          <td style="text-align:center;"><a href="#"><input type="button" value="Download" onclick="downloadData(<?=environment?>,<?=data[i][0]?>,<?=data[i][1]?>)" class="btnRedMini"/></a></td>
+        </tr>
+      <? } ?>
+    </table>
+    <div class="footer">
+       <b><?= description ?></b>
+    </div>
+  </body>
+<script type='text/javascript'>;
+  function downloadData(env, dbName, type) {
+    google.script.run.withSuccessHandler(download).getDownloadUrl(env, dbName, type);  }
+
+  function download(obj) {
+    window.open(obj);
+  }
+</script>
+</html>

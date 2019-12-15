@@ -1,0 +1,16 @@
+{
+  "name": "deployment-script-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Code.js",
+  "scripts": {
+    "push": "npm run push:main && npm run push:template",
+    "push:main": "cp .main.clasp.json .clasp.json && clasp push",
+    "push:template": "cp .template.clasp.json .clasp.json && clasp push"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@google/clasp": "^2.3.0"
+  }
+}
