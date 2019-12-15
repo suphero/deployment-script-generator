@@ -1,0 +1,15 @@
+language: node_js
+
+deploy:
+  provider: script
+  script: "npm run push"
+  skip_cleanup: true
+  on:
+    tags: true
+
+notifications:
+  email:
+    recipients:
+    - harunsokullu@gmail.com
+    on_success: change
+    on_failure: always
