@@ -131,6 +131,7 @@ function getDownloadUrl(env, dbName, type) {
   }
   var spacer = "\n--------------------------------------------- \n\n";
   var script = "Use " + dbName + "\n\n";
+  var go = "\nGO\n";
   for (var i = 0; i < data.length; i++) {
     if (data[i][dbColumn] != dbName || data[i][typeColumn] != type) continue;
     script = script + spacer;
@@ -138,6 +139,7 @@ function getDownloadUrl(env, dbName, type) {
     script = script + "\t--Task: \t"+ data[i][taskColumn] + "\n";
     script = script + "\t--Type: \t"+ data[i][typeColumn] + "\n\n";
     script = script + data[i][scriptColumn] + "\n";
+    script = script + go;
   }
 
   var fileName = dbName + "_" + type + ".sql";
@@ -159,6 +161,7 @@ function transportData() {
 
 function getAllValuesWithDate() {
   var data = getProdData();
+  // TODO: 2. ve 3. parametreler localization ile ilgili olmalı
   var date = Utilities.formatDate(new Date(), "GMT+3", "dd/MM/yyyy")
   var endDate = date
 
@@ -167,11 +170,6 @@ function getAllValuesWithDate() {
     data[i][dateColumn]=endDate;
   }
   return data;
-}
-
-function test(){
-  // Test
-  transportData();
 }
 
 function scriptToHistoryMapper(data) {
